@@ -64,7 +64,7 @@ function sumReducer(accu, curr) {
 function mutateArray(a) {
   for (let i = 0; i < a.length; i ++) {
     a[i]['room_no'] = a[i]['guest_booking']['room_no'];
-    a[i]['some_array'] = a[i]['guest_booking']['some_array'].reduce(sumReducer);
+    a[i]['some_total'] = a[i]['guest_booking']['some_array'].reduce(sumReducer);
     delete a[i]['guest_booking'];  
   };
   return a;
