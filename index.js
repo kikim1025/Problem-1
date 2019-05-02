@@ -55,8 +55,14 @@ var arr = [
   },
 ];
 
+// mutate given array for Problem 1.1 
 function mutateArray(a) {
-    return a;
+  for (let i = 0; i < a.length; i ++) {
+    a[i]['room_no'] = a[i]['guest_booking']['room_no'];
+    a[i]['some_array'] = a[i]['guest_booking']['some_array'];
+    delete a[i]['guest_booking'];  
+  };
+  return a;
 }
 
 $(document).ready(function() {
