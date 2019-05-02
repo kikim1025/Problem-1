@@ -55,11 +55,16 @@ var arr = [
   },
 ];
 
-// mutate given array for Problem 1.1 
+// reducer helper function for sum on Problem 1.2
+function sumReducer(accu, curr) {
+  return accu + curr;
+} 
+
+// mutate given array for Problem 1.2 
 function mutateArray(a) {
   for (let i = 0; i < a.length; i ++) {
     a[i]['room_no'] = a[i]['guest_booking']['room_no'];
-    a[i]['some_array'] = a[i]['guest_booking']['some_array'];
+    a[i]['some_array'] = a[i]['guest_booking']['some_array'].reduce(sumReducer);
     delete a[i]['guest_booking'];  
   };
   return a;
