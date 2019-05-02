@@ -60,7 +60,7 @@ function sumReducer(accu, curr) {
   return accu + curr;
 } 
 
-// mutate given array for Problem 1.3
+// mutate given array for Problem 1.4
 // assumed that mutation of a is necessary as per function name, rather than enforcing immutability
 function mutateArray(a) {
   for (let i = 0; i < a.length; i ++) {
@@ -73,6 +73,21 @@ function mutateArray(a) {
       i--;
     } 
   };
+  a.sort(function(object1, object2) {
+    if (object1.last_name < object2.last_name) {
+      return -1;
+    } else if (object1.last_name === object2.last_name) {
+      if (object1.first_name < object2.first_name) {
+        return -1;
+      } else if (object1.first_name === object2.first_name) {
+        return 0;
+      } else {
+        return 1;
+      };
+    } else {
+      return 1;
+    };
+  });
   return a;
 }
 
