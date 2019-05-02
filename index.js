@@ -60,12 +60,18 @@ function sumReducer(accu, curr) {
   return accu + curr;
 } 
 
-// mutate given array for Problem 1.2 
+// mutate given array for Problem 1.3
+// assumed that mutation of a is necessary as per function name, rather than enforcing immutability
 function mutateArray(a) {
   for (let i = 0; i < a.length; i ++) {
-    a[i]['room_no'] = a[i]['guest_booking']['room_no'];
-    a[i]['some_total'] = a[i]['guest_booking']['some_array'].reduce(sumReducer);
-    delete a[i]['guest_booking'];  
+    if (a[i]['guest_type'] === 'guest') {
+      a[i]['room_no'] = a[i]['guest_booking']['room_no'];
+      a[i]['some_total'] = a[i]['guest_booking']['some_array'].reduce(sumReducer);
+      delete a[i]['guest_booking']; 
+    } else {
+      a.splice(i, 1);
+      i--;
+    } 
   };
   return a;
 }
